@@ -310,8 +310,8 @@ class PrivateEncryptedChannelTests: XCTestCase {
         init(_ authResponseSequence: [PusherAuth]) {
             self.authResponseSequence = authResponseSequence
         }
-        func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> Void) {
-            completionHandler(authResponseSequence.removeFirst())
+        func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?, AuthError?) -> ()) {
+            completionHandler(authResponseSequence.removeFirst(), nil)
         }
     }
 

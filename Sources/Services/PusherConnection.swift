@@ -730,12 +730,7 @@ import NWWebSocket
             }
 
         case .authorizer(authorizer: let authorizer):
-            authorizer.fetchAuthValue(socketID: socketId, channelName: channel.name) { pusherAuth in
-                if pusherAuth == nil {
-                    Logger.shared.debug(for: .authInfoForCompletionHandlerIsNil)
-                }
-                completionHandler(pusherAuth, nil)
-            }
+            authorizer.fetchAuthValue(socketID: socketId, channelName: channel.name, completionHandler: completionHandler)
             return true
 
         case .inline(secret: let secret):

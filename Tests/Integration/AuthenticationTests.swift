@@ -217,8 +217,8 @@ class AuthenticationTests: XCTestCase {
     func testAuthorizationUsingSomethingConformingToTheAuthorizerProtocol() {
 
         class SomeAuthorizer: Authorizer {
-            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> Void) {
-                completionHandler(PusherAuth(auth: "testKey123:authorizerblah123"))
+            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?, AuthError?) -> ()) {
+                completionHandler(PusherAuth(auth: "testKey123:authorizerblah123"), nil)
             }
         }
 
@@ -248,11 +248,11 @@ class AuthenticationTests: XCTestCase {
     func testAuthorizationOfPresenceChannelSubscriptionUsingSomethingConformingToTheAuthorizerProtocol() {
 
         class SomeAuthorizer: Authorizer {
-            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> Void) {
+            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?, AuthError?) -> ()) {
                 completionHandler(PusherAuth(
                     auth: "testKey123:authorizerblah1234",
                     channelData: "{\"\(Constants.JSONKeys.userId)\":\"777\", \"\(Constants.JSONKeys.userInfo)\":{\"twitter\":\"hamchapman\"}}"
-                ))
+                ), nil)
             }
         }
 
