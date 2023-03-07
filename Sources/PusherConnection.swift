@@ -713,12 +713,7 @@ import Starscream
                 return false
             }
         case .authorizer(authorizer: let authorizer):
-            authorizer.fetchAuthValue(socketID: socketId, channelName: channel.name) { pusherAuth in
-                if pusherAuth == nil {
-                    print("Auth info passed to authorizer completionHandler was nil")
-                }
-                completionHandler(pusherAuth, nil)
-            }
+            authorizer.fetchAuthValue(socketID: socketId, channelName: channel.name, completionHandler: completionHandler)
             return true
         case .inline(secret: let secret):
             var message = ""
@@ -968,22 +963,29 @@ extension PusherConnection: PusherEventQueueDelegate {
     }
 }
 
-internal struct PusherAuthError: Error {
-    enum Kind {
+public struct PusherAuthError: Error {
+    public enum Kind {
         case notConnected
         case noMethod
         case couldNotBuildRequest
         case invalidAuthResponse
         case requestFailure
     }
+    
+    public init(kind: Kind, message: String? = nil, response: URLResponse? = nil, data: String? = nil, error: NSError? = nil) {
+        self.kind = kind
+        self.message = message
+        self.response = response
+        self.data = data
+        self.error = error
+    }
 
-    let kind: Kind
+    public let kind: Kind
+    public var message: String? = nil
+    public var response: URLResponse? = nil
+    public var data: String? = nil
+    public var error: NSError? = nil
 
-    var message: String? = nil
-
-    var response: URLResponse? = nil
-    var data: String? = nil
-    var error: NSError? = nil
 }
 
 @objc public class PusherAuth: NSObject {

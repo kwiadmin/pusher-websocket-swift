@@ -221,8 +221,8 @@ class AuthenticationTests: XCTestCase {
     func testAuthorizationUsingSomethingConformingToTheAuthorizerProtocol() {
 
         class SomeAuthorizer: Authorizer {
-            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> ()) {
-                completionHandler(PusherAuth(auth: "testKey123:authorizerblah123"))
+            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?, PusherAuthError?) -> ()) {
+                completionHandler(PusherAuth(auth: "testKey123:authorizerblah123"), nil)
             }
         }
 
@@ -252,12 +252,14 @@ class AuthenticationTests: XCTestCase {
     func testAuthorizationOfPresenceChannelSubscriptionUsingSomethingConformingToTheAuthorizerProtocol() {
 
         class SomeAuthorizer: Authorizer {
-            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> ()) {
+            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?, PusherAuthError?) -> ()) {
                 completionHandler(PusherAuth(
                     auth: "testKey123:authorizerblah1234",
                     channelData: "{\"user_id\":\"777\", \"user_info\":{\"twitter\":\"hamchapman\"}}"
-                ))
+                ), nil)
             }
+            
+            func fetchAuthValue(socketID: String, channelName: String, completionHandler: @escaping (PusherAuth?) -> ()) {            }
         }
 
         let ex = expectation(description: "the channel should be subscribed to successfully")
