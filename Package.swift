@@ -8,8 +8,8 @@ let package = Package(
         .library(name: "PusherSwift", targets: ["PusherSwift"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ashleymills/Reachability.swift.git", .upToNextMajor(from: "5.0.0")),
-        .package(url: "https://github.com/daltoniam/Starscream.git", .upToNextMajor(from: "3.1.0")),
+        .package(url: "https://github.com/kwiadmin/Reachability.swift", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/kwiadmin/Starscream", .upToNextMajor(from: "3.1.0")),
     ],
     targets: [
         .target(
