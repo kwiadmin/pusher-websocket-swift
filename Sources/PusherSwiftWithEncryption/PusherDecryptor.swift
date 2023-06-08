@@ -1,4 +1,5 @@
 import Sodium
+import Foundation
 
 class PusherDecryptor {
 

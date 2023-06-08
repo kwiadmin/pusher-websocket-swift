@@ -27,6 +27,15 @@
           "revision": "37760e9a52030bb9011972c5213c3350fa9d41fd",
           "version": "1.0.0"
         }
+      },
+      {
+        "package": "Sodium",
+        "repositoryURL": "https://github.com/jedisct1/swift-sodium",
+        "state": {
+          "branch": null,
+          "revision": "176745ddc4991b27f80c3c2637652eb33b5782eb",
+          "version": "0.9.0"
+        }
       }
     ]
   },
