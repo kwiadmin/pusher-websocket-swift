@@ -30,11 +30,11 @@
       },
       {
         "package": "Sodium",
-        "repositoryURL": "https://github.com/jedisct1/swift-sodium",
+        "repositoryURL": "https://github.com/kwiadmin/swift-sodium",
         "state": {
           "branch": null,
-          "revision": "176745ddc4991b27f80c3c2637652eb33b5782eb",
-          "version": "0.9.0"
+          "revision": "0fcb244f5ef370fc85859b435587216e2fcf1ad7",
+          "version": null
         }
       }
     ]
