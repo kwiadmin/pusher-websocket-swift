@@ -32,8 +32,8 @@
         "package": "Sodium",
         "repositoryURL": "https://github.com/kwiadmin/swift-sodium",
         "state": {
-          "branch": null,
-          "revision": "0fcb244f5ef370fc85859b435587216e2fcf1ad7",
+          "branch": "mpos-25674",
+          "revision": "287426e2de1005fc49328a90bd632e7ff65b447a",
           "version": null
         }
       }
